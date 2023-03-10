@@ -1,0 +1,17 @@
+---
+clickhouse:
+  hosts:
+    clickhouse-01:
+      ansible_host: 51.250.66.141
+      ansible_user: usrcon
+vector:
+  hosts:
+    vector-01:
+      ansible_host: 51.250.66.141
+      ansible_user: usrcon
+      clickhouse_connect: http://127.0.0.1:8123
+nginx-lighthouse:
+  hosts:
+    nginx-lighthouse-01:
+      ansible_host: 51.250.66.141
+      ansible_user: usrcon
