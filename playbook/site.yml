@@ -64,7 +64,7 @@
         - clickhouse
 
     - name: Create database2
-      ansible.builtin.command: "clickhouse-client -q 'CREATE DATABASE IF NOT EXISTS nginxdb;'"
+      ansible.builtin.command: "clickhouse-client -q 'CREATE DATABASE nginxdb;'"
       register: create_db2
       failed_when: create_db2.rc != 0 and create_db.rc !=82
       changed_when: create_db2.rc == 0
@@ -72,7 +72,7 @@
         - clickhouse
 
     - name: Create database3
-      ansible.builtin.command: "clickhouse-client -q 'CREATE TABLE IF NOT EXISTS nginxdb.access_logs (message String) ENGINE = MergeTree() ORDER BY tuple();'"
+      ansible.builtin.command: "clickhouse-client -q 'CREATE TABLE nginxdb.access_logs (message String) ENGINE = MergeTree() ORDER BY tuple();'"
       register: create_db3
       failed_when: create_db3.rc != 0 and create_db.rc !=82
       changed_when: create_db3.rc == 0
