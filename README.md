@@ -33,6 +33,7 @@
 
 
 Плейбук позволяет отправить логи nginx c лайтхауса с помощью вектора в кликхаус.  
+
 Пример сбора логов:  
 ```
 ginx-lighthouse-01.ru-central1.internal :) SELECT * FROM nginxdb.access_logs
