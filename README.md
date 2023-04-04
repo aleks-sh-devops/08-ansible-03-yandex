@@ -1,34 +1,33 @@
-## Данный плейбук позволяет установить clickhouse  vector и lighthouse
+## Данный плейбук состоит из 3 частей и позволяет установить clickhouse  vector и lighthouse
 
 ## Особенности
 <table>
 	<tr>
-	    <th>Переменная</th>
+	    <th>Файл</th>
 	    <th>Описание</th>
 	</tr >
 	<tr >
-	    <td>**/playbook/group_vars/**</td>
-	    <td>Переменные, которые можно при желании изменить (например версию ПО)  </td>
+	    <td>/playbook/group_vars/all.yml</td>
+	    <td>Файл с групповыми переменными нашего плейбука. Здесь указываются общие переменные. </td>
 	</tr>
 	<tr>
-	    <td>**/group_vars/clickhouse/vars.yml**</td>
-	    <td>здесь переменные, отвечающие за кликхаус. Например мы можем поменять версию clickhouse_version: "22.3.3.44" на что-нибудь поновее, например или наоборот постарее https://packages.clickhouse.com/rpm/stable/ Таким образом мы избегаем хардкода и меняем в одном месте
-clickhouse-client, clickhouse-server, clickhouse-common-static - имена пакетов (при переходе по ссылке выше можно проверить). Таким способом мы уменьшаем количество строк, поскольку используем цикл (with_items: "{{ clickhouse_packages }}") и тем самым добиваемся лучшей читабельности.  </td>
+	    <td>/group_vars/clickhouse/vars.yml</td>
+	    <td>В данном файле задаются переменные, отвечающие за кликхаус. </td>
 	</tr>
   	<tr >
-	    <td>**/group_vars/vector/vars.yml**</td>
-	    <td>здесь переменные, отвечающие за вектор. vector_version: "0.21.1" - это версия вектора, а vector_config_dir: "{{ ansible_user_dir }}/vector_config/"  это директория, которая будет создана и где сгенерируется конфигурационный файл из джинжи темплейта. </td>
+	    <td>/group_vars/vector/vars.yml</td>
+	    <td>Здесь задаются переменные, отвечающие за вектор. </td>
 	</tr>
 	<tr>
-	    <td>**/group_vars/lighthouse/vars.yml** </td>
-	    <td>здесь переменные, отвечающие за лайтхаус. lighthouse_repo - ссылка на гит репозиторий, lighthouse_location_dir - директория, где распологается лайнхаус.  </td>
+	    <td>/group_vars/lighthouse/vars.yml </td>
+	    <td>Здесь переменные, отвечающие за лайтхаус. lighthouse_repo - ссылка на гит репозиторий, lighthouse_location_dir - директория, где распологается лайнхаус.  </td>
  	<tr>
-	    <td>**/inventory/prod.yml**</td>
-	    <td>переменные хостов и параметров подключения  </td>
+	    <td>/inventory/prod.yml</td>
+	    <td>Файл инвентаризации в котором указываются переменные хостов и параметры подключения  </td>
 	</tr>
  	<tr>
-	    <td>**/templates**</td>
-	    <td>шаблоны конфигурационных файлов  </td>
+	    <td>/templates/*</td>
+	    <td>Шаблоны конфигурационных файлов нашего плейбука </td>
 	</tr>
 </table>
 
